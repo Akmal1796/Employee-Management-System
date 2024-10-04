@@ -7,15 +7,17 @@ using System.Threading.Tasks;
 
 namespace BaseLibrary.DTOs
 {
-    public class AccountBase
+    public class Register : AccountBase
     {
-        [DataType(DataType.EmailAddress)]
-        [EmailAddress]
         [Required]
-        public string? Email { get; set; }
+        [MinLength(5)]
+        [MaxLength(100)]
+        public string? FullName { get; set; }
+
 
         [DataType(DataType.Password)]
+        [Compare(nameof(Password))]
         [Required]
-        public string? Password { get; set; }
+        public string? ConfirmPassword { get; set; }
     }
 }
